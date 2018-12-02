@@ -20,6 +20,7 @@ def main():
     else:
         print('logging out')
         auth_lib.check_result(auth_lib.go_offline(login_url))
+        auth_lib.check_result(auth_lib.go_offline_local(login_url))
 
 
 if __name__ == "__main__":

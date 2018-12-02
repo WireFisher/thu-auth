@@ -1,8 +1,9 @@
-#!/usr/bin/python3
+#!/usr/bin/env python3
 # -*- coding:utf-8 -*-
 __author__ = 'WZ'
 
 import auth_lib
+import sys
 
 login_url = {
             'IPv4': "https://auth4.tsinghua.edu.cn",
@@ -13,7 +14,7 @@ login_url = {
 def check_online():
     for key in login_url:
         ip_addr = auth_lib.get_data(login_url[key])
-        if len(ip_addr):
+        if len(ip_addr) or (len(sys.argv) > 1 and sys.argv[1] == "-f"):
             print(key, 'is not online!')
             print(auth_lib.go_online(login_url[key], ip_addr[0]))
             return
